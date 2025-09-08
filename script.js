@@ -20,6 +20,7 @@ function getHumanChoice() {
     return choice;
 }
 
+// play 1 round
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toUpperCase();
     //human = rock
@@ -66,9 +67,24 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-console.log(humanSelection);
-console.log(computerSelection);
+function playGame() {
+    let humanSelection;
+    let computerSelection;
+    let round = 1;
+    while (round < 6) {
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+        console.log("Human Score after " + round + " rounds: " + humanScore);
+        console.log("Computer Score after " + round + " rounds: " + computerScore);
+        round++;
+    }
+    if (humanScore > computerScore)
+        console.log("Congratulations! You win with a score of " + humanScore);
+    else if (humanScore < computerScore)
+        console.log("Computer wins with a score of " + computerScore);
+    else
+        console.log("This game is a draw");
+}
 
-playRound(humanSelection, computerSelection);
+playGame();
